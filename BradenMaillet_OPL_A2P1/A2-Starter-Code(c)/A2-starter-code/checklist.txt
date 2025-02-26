@@ -1,0 +1,22 @@
+Checklist for A2 Part B:
+
+1) Extend the scanner code to accommodate the new tokens in the extended calculator language (`if`, `while`, `end`, and the six relational operators).
+   a) Add new enum values to the `token` type in `scan.h` - e.g., `t_if` for the `if` keyword, `t_eq` for the equals relational operator (`=`), etc.
+   b)  Add corresponding entries to the `names` array in `scantest.cpp` so that you can print the token values.
+   c) Extend the `scan` function in `scan.cpp` to recognize the new tokens. For the new keywords (`if`, `while`, and `end`), follow the examples for the  `read` and `write` keywords in the starter code. For the relational operators (`<`, `<=`, `>`, `>=`, `=`, and `!=`), you can use the assignment operator `:=` and arithmetic operators in the starter code as your models.
+   d) Once you have the new tokens implemented in the scanner, you should be able to run `scantest < primes.cl` - it should get to EOF without stopping, and it should list all of the tokens in the program correctly.
+
+Make sure that you have step (1) working correctly before attempting step (2)!
+
+2) Extend the parser code to accommodate the new terminal and nonterminal (token) symbols in the extended calculator language grammar (`if` and `while` statements, the `end` marker, and conditional expressions).
+   a) Copy your updated declaration of the `names` array from `scantest.cpp` to `parser.cpp` .
+   b) Add forward declarations for the new nonterminal symbol recursive descent functions (`cond` & `rel_op`).
+   c) Add new cases to the `switch` statement in the `stmt` function to handle the `if` and `while` statements.
+   d) Add implementations of the `cond` and `rel_op` functions. (Note: You implemented the `cond` function during In-Class Exercise #6.)
+   e) As necessary, update the cases in the `switch` statements of the existing recursive descent functions to accommodate any additional elements in the predict sets of the extended calculator language (reference the table on Page 6 of the A2 handout).
+   f) Once you have completed steps (2)(a) through (2)(e), you should be able to run
+   `parse < primes.cl` - it should get to EOF without stopping, and it should list all of the predictions made by the extended calculator grammar.
+
+Basically, your parser should output a sequence of predictions that reflect the derivation of the parse tree for the program. That is, from the list of predictions that your parser outputs, you should be able to draw the corresponding parse tree (see the simple example on Page 4 of the Module 2 Part 2 Diagrams for reference).
+
+You can see a sample Abstract Syntax Tree for the `primes.cl` program on page 4 of the A2 handout, which you should also be able to correlate with the list of predictions in your output.

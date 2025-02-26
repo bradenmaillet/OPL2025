@@ -1,0 +1,26 @@
+Here is an LL(1) grammar for the calculator language (notated using EBNF),
+extended with if and while statements:
+
+P	→ 	SL $$
+SL	→ 	S SL  |  ε
+S	→ 	id := E  |  read id  |  write E  |  if C SL end  |  while C SL end
+C	→ 	E ro E
+E	→ 	T TT
+T	→ 	F FT
+F	→ 	( E )  |  id  |  lit
+TT	→ 	ao T TT  |  ε
+FT	→ 	mo F FT  |  ε
+ro	→ 	=  |  <>  |  <  |  >  |  <=  |  >=
+ao	→ 	+  |  -
+mo	→ 	*  |  /
+
+Here, the new nonterminal C is meant to suggest a “condition.” The 
+conditional operators (=, <> [not equal], <, >, <=, and >=) produce 
+either true or false when evaluated. The body of an if statement is 
+executed if and only if its condition is true. The body of a while loop 
+is executed zero or more times, so long as its condition is true.
+
+Note that the end-of-file token ($$) is special: it doesn't actually consist 
+of two dollar-sign characters; that’s just how we draw it on paper. 
+It’s generated automatically by the scanner when (and only when) the 
+end of the input is reached. 

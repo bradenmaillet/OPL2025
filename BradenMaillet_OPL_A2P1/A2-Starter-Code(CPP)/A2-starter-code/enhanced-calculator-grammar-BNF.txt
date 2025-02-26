@@ -1,0 +1,28 @@
+P	→ 	SL $$
+SL	→ 	S SL
+SL	→	ε
+S	→ 	id := E
+S	→ 	read id
+S	→ 	write E
+S	→ 	if C SL end
+S	→ 	while C SL end
+C	→ 	E ro E
+E	→ 	T TT
+T	→ 	F FT
+F	→ 	( E )
+F	→ 	id
+F	→ 	lit
+TT	→ 	ao T TT
+TT	→ 	ε
+FT	→ 	mo F FT
+FT	→ 	ε
+ro	→ 	=
+ro	→ 	<>
+ro	→ 	<
+ro	→ 	>
+ro	→ 	<=
+ro	→ 	>=
+ao	→ 	+
+ao	→ 	-
+mo	→ 	*
+mo	→ 	/

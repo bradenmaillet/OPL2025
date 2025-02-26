@@ -1,0 +1,40 @@
+Here is an LL(1) grammar for the original calculator language,
+as shown in Fig 2.15 of the PLP textbook.
+A scanner and parser for this grammar are implemented in the provided C files.
+Note: "$$" represents end-of-file (EOF). The scanner will return EOF
+as a token type.
+
+1.  program 	→ stmt_list $$
+2.  stmt_list 	→ stmt stmt_list | ε
+3.  stmt 		→ id := expr | read id | write expr
+4.  expr		→ term term_tail
+5.  term_tail 	→ add_op term term_tail | ε
+6.  term		→ factor fact_tail
+7.  fact_tail	→ mult_op fact fact_tail | ε
+8.  factor	 	→ ( expr ) | id | number
+9.  add_op 		→ + | -
+10. mult_op 	→ * | /
+
+
+The following is the same grammar, but rewritten using "original" BNF
+(i.e., without using the alternatives ("|") extension from EBNF).
+
+1.  program 	→ stmt_list $$
+2.  stmt_list 	→ stmt stmt_list
+3.  stmt_list 	→ ε
+4.  stmt 		→ id := expr
+5.  stmt 		→ read id
+6.  stmt 		→ write expr
+7.  expr		→ term term_tail
+8.  term_tail 	→ add_op term term_tail
+9.  term_tail 	→ ε
+10. term		→ factor fact_tail
+11. fact_tail	→ mult_op fact fact_tail
+12. fact_tail	→ ε
+13. factor	 	→ ( expr )
+14. factor	 	→ id
+15. factor	 	→ number
+16. add_op 		→ +
+17. add_op 		→ -
+18. mult_op 	→ *
+19. mult_op 	→ /

@@ -1,0 +1,27 @@
+SL	::= 	ST SL
+SL	::=		"
+ST	::= 	id := E
+ST	::= 	read id
+ST	::= 	write E
+ST	::= 	if C SL end
+ST	::= 	while C SL end
+C	::= 	E ro E
+E	::= 	T TT
+T	::= 	F FT
+F	::= 	( E )
+F	::= 	id
+F	::= 	lit
+TT	::= 	ao T TT
+TT	::= 	"
+FT	::= 	mo F FT
+FT	::= 	"
+ro	::= 	=
+ro	::= 	<>
+ro	::= 	<
+ro	::= 	>
+ro	::= 	<=
+ro	::= 	>=
+ao	::= 	+
+ao	::= 	-
+mo	::= 	*
+mo	::= 	/
