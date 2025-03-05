@@ -1,0 +1,7 @@
+Group 8
+OPL
+Assignment 2 Part 2
+
+Discussion:
+
+	The following code has been updated so that includes functions cond() and relop(). These are recursive decent functions within the ECL. There has also been updates to the names list to include conditional and relational operation tokens(while, if, end, <, >, <=, etc.). I also updated the error function so it displays which function is calling the function. This is purely for debugging purposes. The code now works with no known bugs for the given .cl files.
